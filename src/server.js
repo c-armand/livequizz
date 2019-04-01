@@ -20,10 +20,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static(path.join(__dirname, '../client/dist')));
+/*app.use(express.static(path.join(__dirname, '../client/dist')));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/../client/dist/index.html'))
-});
+});*/
 
 const currentGame = {
   currentQuestion: {
@@ -39,7 +39,7 @@ const currentGame = {
 };
 
 // Start listening
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 const server = app.listen(port, () => {
   console.log(`Listening on port ${port}...`);
 });
