@@ -1,0 +1,23 @@
+{
+  "name": "FootballQuizz",
+  "version": "1.0.149",
+  "main": "server.js",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.3"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "joi": "^14.3.0",
+    "rxjs": "^6.3.3",
+    "rxjs-compat": "^6.3.3",
+    "socket.io": "^2.2.0"
+  },
+  "scripts": {
+    "start": "nodemon --exec babel-node src/server.js",
+    "build": "babel src --out-dir dist",
+    "serve": "node dist/server.js"
+  }
+}

@@ -1,0 +1,225 @@
+.wrap {
+  height: 100%;
+}
+
+.App {
+  min-height: 100%;
+  position: relative;
+  width: 960px;
+  margin: auto;
+  font-size: 14px;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 15vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  height: 200px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.App-game {
+  position: absolute;
+  top: 220px;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  background: #01B5DA;
+}
+
+/*-------------------*/
+/*    SIDEBAR        */
+/*-------------------*/
+
+.Sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 240px;
+  background: rgb(243, 105, 4);
+  color: #fff;
+  border-right: 1px solid #fff;
+}
+
+.Sidebar .Playerlist .title {
+  font-size: 18px;
+}
+
+.Sidebar .Playerlist ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.Sidebar .Playerlist ul li {
+  margin: 0;
+  padding: 0;
+  color: rgb(105, 44, 0);
+  font-weight: 500;
+}
+
+.Sidebar .Playerlist ul li.active {
+  font-weight: 700;
+}
+
+.Sidebar .Playerlist ul li .fa-futbol {
+  font-size: 10px;
+  position: relative;
+  top: -2px;
+  margin-right: 2px;
+}
+
+.Sidebar .EventLog {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 240px;
+  font-weight: 300;
+  font-size: 12px;
+  background: rgb(105, 44, 0);
+  border-bottom-left-radius: 5px;
+}
+
+.Sidebar .EventLog .log-title {
+  z-index: 999;
+  position: absolute;
+  background: rgb(105, 44, 0);
+  display: block;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.Sidebar .EventLog .log-container {
+  overflow-y: scroll;
+  position: absolute;
+  top: 30px;
+  bottom: 15px;
+  right: 15px;
+  left: 15px;
+}
+
+.Sidebar .EventLog .log-container::-webkit-scrollbar {
+  width: 8px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 8px;
+  background: rgba(0, 0, 0, 0.075);
+  border-radius: 5px;
+}
+
+.Sidebar .EventLog ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Sidebar .EventLog li {
+  padding: 2px 0;
+}
+
+.Question {
+  margin-left: 240px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.Question ul {
+  display: inline-block;
+  width: 340px;
+  margin: 0 auto;
+  padding: 0;
+  list-style-type: none;
+}
+
+.Question ul li {
+  background: #fff;
+  color: #333;
+  font-weight: 700;
+}
+
+.Answer {
+  background: rgb(228, 250, 228);
+  color: rgb(16, 121, 16);
+  width: 340px;
+  margin: 0 auto;
+}
+
+.GameResults {
+  margin-left: 240px;
+  text-align: center;
+}
+
+.GameResults table {
+  width: 420px;
+  margin: 0 auto;
+  font-weight: 500;
+}
+
+.GameResults table td {
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+}
+
+.GameResults table .first {
+  color: orangered;
+  font-size: 18px;
+}
+
+.GameResults table .fa-trophy {
+  font-size: 54px;
+}
+
+.PlayerProposition {
+  position: absolute;
+  bottom: 0;
+  left: 240px;
+  right: 0;
+  background: rgb(0, 125, 149);
+}
+
+.PlayerProposition .feedback {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+/* .ComposeAnswer .UserInput {
+  padding: 20px;
+  border-top: 1px solid rgb(88, 194, 216);
+  background: rgb(0, 153, 184);
+  border-bottom-right-radius: 5px;
+}
+
+.PropositionSubmitted {
+  text-align: center;
+  background: rgba(255, 255, 255, 1);
+  width: 340px;
+  margin: 0 auto 20px;
+} */
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

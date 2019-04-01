@@ -1,0 +1,18 @@
+// Game
+export const RECEIVE_GAME_DATA = 'RECEIVE_GAME_DATA'
+export const GAME_RESULTS = 'GAME_RESULTS'
+
+// Players
+export const JOIN_GAME = 'JOIN_GAME'
+export const REGISTERED = 'REGISTERED'
+export const PLAYER_JOINED = 'PLAYER_JOINED'
+export const PLAYER_DISCONNECTED = 'PLAYER_DISCONNECTED'
+export const UPDATE_POINTS = 'UPDATE_POINTS'
+
+// Current question
+export const NEXT_CLUB = 'NEXT_CLUB'
+export const SUBMIT_PROPOSITION = 'SUBMIT_PROPOSITION'
+export const PROPOSITION_FEEDBACK = 'PROPOSITION_FEEDBACK'
+export const ANSWER_FOUND = 'ANSWER_FOUND'
+export const REVEAL_ANSWER = 'REVEAL_ANSWER'
+export const NEXT_QUESTION = 'NEXT_QUESTION'
