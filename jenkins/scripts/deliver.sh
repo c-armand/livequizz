@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 ssh charles@51.77.202.235 <<EOF
- cd ~/football-webapp
+ cd ~/footballquizz
  git pull
  npm install -- production
  npm run build
