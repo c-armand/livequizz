@@ -1,6 +1,6 @@
 {
   "name": "FootballQuizz",
-  "version": "1.0.149",
+  "version": "1.0.150",
   "main": "server.js",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
