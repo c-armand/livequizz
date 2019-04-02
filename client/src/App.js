@@ -16,7 +16,7 @@ class App extends Component {
         {/* <PersistGate loading={null} persistor={persistor}> */}
           <div className="wrap">
             <header className="App-header">
-              <h3 className="mb-3">Football Quizz</h3>
+              <h3 className="mb-3">Canal Football Quizz</h3>
             </header>
             <div className="App">
               <div className="App-game rounded shadow">
