@@ -36,6 +36,7 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
+    "dotenv-webpack": "^1.7.0",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",

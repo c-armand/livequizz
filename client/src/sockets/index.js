@@ -6,7 +6,7 @@ import * as playersActions from '../actions/playersActions'
 import * as questionActions from '../actions/questionActions'
 
 const setupSocket = (dispatch) => {
-  const socket = io('http://footballquizz.fr:3001')
+  const socket = io(process.env.API_URL)
 
   socket.on('receiveGameData', gameData => {
     dispatch(gameActions.receiveGameData(gameData))
