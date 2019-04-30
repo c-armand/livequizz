@@ -1,5 +1,11 @@
 import playersReducer, { initialState } from '../../src/reducers/playersReducer'
-import { RECEIVE_GAME_DATA, REGISTERED, PLAYER_JOINED, PLAYER_DISCONNECTED, UPDATE_POINTS } from '../../src/actions/types'
+import { RECEIVE_GAME_DATA, REGISTERED, PLAYER_JOINED, PLAYER_DISCONNECTED, UPDATE_POINTS, INIT_GAME, PROPOSITION_FEEDBACK } from '../../src/actions/types'
+
+const players = [
+  { id: 1, username: 'Leo', points: 5 },
+  { id: 2, username: 'Bob', points: 3 },
+  { id: 3, username: 'Maria', points: 2 }
+]
 
 describe('players reducer', () => {
 
@@ -10,20 +16,20 @@ describe('players reducer', () => {
   it('should handle RECEIVE_GAME_DATA', () => {
     expect(playersReducer(undefined, {
       type: RECEIVE_GAME_DATA,
-      payload: {
-        players: [
-          { id: 1, username: 'Leo', points: 5 },
-          { id: 2, username: 'Bob', points: 3 },
-          { id: 3, username: 'Maria', points: 2 }
-        ]
-      }
+      payload: { players }
     })).toEqual({
       ...initialState,
-      list: [
-        { id: 1, username: 'Leo', points: 5 },
-        { id: 2, username: 'Bob', points: 3 },
-        { id: 3, username: 'Maria', points: 2 }
-      ]
+      list: players
+    })
+  })
+
+  it('should handle INIT_GAME', () => {
+    expect(playersReducer(undefined, {
+      type: INIT_GAME,
+      payload: { players }
+    })).toEqual({
+      ...initialState,
+      list: players
     })
   })
 
@@ -58,6 +64,27 @@ describe('players reducer', () => {
     })).toEqual({
       ...initialState,
       list: []
+    })
+  })
+
+  it('should handle PROPOSITION_FEEDBACK', () => {
+    expect(playersReducer({
+      ...initialState,
+      current: {
+        id: 3,
+        username: 'Carlos',
+        points: 0
+      }
+    }, {
+      type: PROPOSITION_FEEDBACK,
+      payload: { pointsWon: 4 }
+    })).toEqual({
+      ...initialState,
+      current: {
+        id: 3,
+        username: 'Carlos',
+        points: 4
+      }
     })
   })
 

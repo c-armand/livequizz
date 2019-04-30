@@ -1,225 +1,115 @@
-.wrap {
-  height: 100%;
+.navbar {
+  background: #2e4057 !important;
 }
 
-.App {
-  min-height: 100%;
-  position: relative;
-  width: 960px;
-  margin: auto;
-  font-size: 14px;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 15vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  height: 200px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: 100;
-}
-
-.App-game {
-  position: absolute;
-  top: 220px;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  background: #01B5DA;
-}
-
-/*-------------------*/
-/*    SIDEBAR        */
-/*-------------------*/
-
-.Sidebar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 240px;
-  background: rgb(243, 105, 4);
+.Rules {
+  background: #2f2d2e;
   color: #fff;
-  border-right: 1px solid #fff;
 }
 
-.Sidebar .Playerlist .title {
-  font-size: 18px;
+.Rules h6 {
+  border-bottom: 1px dotted #fff;
 }
 
-.Sidebar .Playerlist ul {
-  padding: 0;
-  list-style-type: none;
+.Rules ul {
+  list-style-type: circle;
+  padding-left: 15px;
+  font-size: 0.8em;
 }
 
-.Sidebar .Playerlist ul li {
-  margin: 0;
-  padding: 0;
-  color: rgb(105, 44, 0);
+.JoinGame .btn-primary {
+  background: #fff !important;
+  border: 1px solid #fff !important;
+  color: #8ab33e;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.PlayerList { background: #99c24d; color: #fff; }
+.PlayerList .JoinGame { border-bottom: 1px solid #8ab33e; }
+.PlayerList table { font-size: 0.9em; }
+.PlayerList table tr.active { font-weight: bold; }
+.PlayerList .badge.gold { background: #e4e400; color: #886500; }
+.PlayerList .badge.silver { background: silver; color: #5a5a5a; }
+.PlayerList .badge.bronze { background: orangered; color: #fff; }
+
+.Game {
+  position: relative;
   font-weight: 500;
 }
 
-.Sidebar .Playerlist ul li.active {
-  font-weight: 700;
+.GameHeader .score { display: inline-block; color: #888; background: rgb(236, 236, 236); }
+.GameHeader .score .score-label { display: inline-block; }
+.GameHeader .score .score-value { display: inline-block; font-weight: 600; color: #6d8d31; background: #d2d6cb; }
+
+.GameHeader ul.QuestionBricks {
+  padding: 0;
 }
 
-.Sidebar .Playerlist ul li .fa-futbol {
-  font-size: 10px;
-  position: relative;
-  top: -2px;
-  margin-right: 2px;
+.GameHeader ul.QuestionBricks li {
+  width: 6.66%;
+  border: 1px solid #fff;
+  display: inline-block;
+  text-align: center;
+  background: #f3f3f3;
+  padding: 3px;
+  border-radius: 5px;
+  color: #999;
 }
 
-.Sidebar .EventLog {
+.GameHeader ul.QuestionBricks li.question-correct { background: #99c24d !important; color: #fff !important; }
+.GameHeader ul.QuestionBricks li.question-wrong { background: #e81d1d !important; color: #fff !important; }
+.GameHeader ul.QuestionBricks li.question-unanswered { background: #dedede !important; color: #bbb !important; }
+.GameHeader ul.QuestionBricks li.question-current { color: #fff; background: #1c82f1; }
+
+.GameHeader .brick-tooltip { text-align: left !important; padding: 8px 10px !important; font-weight: 400 !important; }
+.GameHeader .brick-tooltip .question-label { font-weight: 600; }
+.GameHeader .brick-tooltip .player-proposition { font-weight: 600; }
+.GameHeader .brick-tooltip .badge { font-size: 0.9em !important; font-weight: 500 !important; }
+
+.PlayerProposition {
+  background: #2e4057;
   position: absolute;
   bottom: 0;
-  right: 0;
-  left: 0;
-  height: 240px;
-  font-weight: 300;
-  font-size: 12px;
-  background: rgb(105, 44, 0);
-  border-bottom-left-radius: 5px;
-}
-
-.Sidebar .EventLog .log-title {
-  z-index: 999;
-  position: absolute;
-  background: rgb(105, 44, 0);
-  display: block;
   left: 0;
   right: 0;
-  top: 0;
 }
 
-.Sidebar .EventLog .log-container {
-  overflow-y: scroll;
-  position: absolute;
-  top: 30px;
-  bottom: 15px;
-  right: 15px;
-  left: 15px;
-}
+.PlayerProposition .feedback.success { background: #6d8d31; }
+.PlayerProposition .feedback.failure { background: #e81d1d; }
 
-.Sidebar .EventLog .log-container::-webkit-scrollbar {
-  width: 8px;
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  width: 8px;
-  background: rgba(0, 0, 0, 0.075);
-  border-radius: 5px;
-}
-
-.Sidebar .EventLog ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.Sidebar .EventLog li {
-  padding: 2px 0;
-}
-
-.Question {
-  margin-left: 240px;
-  text-align: center;
-  padding-top: 20px;
-}
-
-.Question ul {
+.Question .countdown {
+  background: #2f2d2e;
+  color: #fff;
   display: inline-block;
-  width: 340px;
-  margin: 0 auto;
-  padding: 0;
-  list-style-type: none;
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+  position: relative;
 }
 
-.Question ul li {
-  background: #fff;
-  color: #333;
+.Question .countdown .time {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 2em;
   font-weight: 700;
 }
 
-.Answer {
-  background: rgb(228, 250, 228);
-  color: rgb(16, 121, 16);
-  width: 340px;
-  margin: 0 auto;
-}
-
-.GameResults {
-  margin-left: 240px;
-  text-align: center;
+.Answer .answer-text {
+  color: #4b7006;
+  font-weight: 600;
+  font-size: 1.6em;
 }
 
 .GameResults table {
-  width: 420px;
+  width: 80%;
   margin: 0 auto;
-  font-weight: 500;
 }
 
-.GameResults table td {
-  border-top: 0 !important;
-  border-bottom: 0 !important;
-}
-
-.GameResults table .first {
-  color: orangered;
-  font-size: 18px;
-}
-
-.GameResults table .fa-trophy {
-  font-size: 54px;
-}
-
-.PlayerProposition {
-  position: absolute;
-  bottom: 0;
-  left: 240px;
-  right: 0;
-  background: rgb(0, 125, 149);
-}
-
-.PlayerProposition .feedback {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
-
-/* .ComposeAnswer .UserInput {
-  padding: 20px;
-  border-top: 1px solid rgb(88, 194, 216);
-  background: rgb(0, 153, 184);
-  border-bottom-right-radius: 5px;
-}
-
-.PropositionSubmitted {
-  text-align: center;
-  background: rgba(255, 255, 255, 1);
-  width: 340px;
-  margin: 0 auto 20px;
-} */
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+.GameResults table tr.first .fa-trophy { color: #eac600 !important; }
+.GameResults table tr.second .fa-trophy { color: silver !important; }
+.GameResults table tr.third .fa-trophy { color: brown !important; }

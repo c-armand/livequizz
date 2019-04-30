@@ -1,10 +1,24 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+import Rules from '../components/Rules';
+
+class Sidebar extends Component {
+  render() {
+    return (
+      <Rules />
+    )
+  }
+}
+
+export default Sidebar;
+
+/* import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 
+import JoinGame from '../components/JoinGame';
 import PlayerList from '../components/PlayerList';
 import EventLog from '../components/EventLog';
-import JoinGame from '../components/JoinGame';
 
 class Sidebar extends Component {
   render() {
@@ -42,8 +56,7 @@ Sidebar.propTypes = {
     points: PropTypes.number.isRequired
   }),
   currentQuestion: PropTypes.shape({
-    winners: PropTypes.array.isRequired,
-    losers: PropTypes.array.isRequired
+    winners: PropTypes.array.isRequired
   }),
   eventLog: PropTypes.arrayOf(
     PropTypes.shape({
@@ -60,4 +73,4 @@ const mapStateToProps = state => ({
   eventLog: state.game.eventLog
 });
 
-export default connect(mapStateToProps)(Sidebar);
+export default connect(mapStateToProps)(Sidebar); */

@@ -1,35 +1,47 @@
 import React from 'react';
+import classnames from 'classnames';
 
 const GameResults = (props) => {
-  const playerItems = props.results
+  const filteredResults = props.results
     .sort((a, b) => b.points - a.points)
-    .map((p, index) => {
+    .filter((p) => p.points > 0);
+
+  const tableResults = (filteredResults.length === 0)
+    ? (<tr><td colSpan={3} className="text-center text-black-50">Aucun joueur n'a marqué de points pendant cette partie !</td></tr>)
+    : filteredResults.map((p, index) => {
+
+      let myClasses = { 'border-bottom': true }
+      let pos = (<i className="fas fa-trophy"></i>);
       if (index === 0) {
-        return (
-          <tr className="first border-bottom" key={p.id}>
-            <td colSpan="3" className="p-4">
-              <div className="mb-3"><i className="fas fa-trophy"></i></div>
-              <strong>{p.username}</strong> remporte la partie avec <strong>{p.points} points !</strong>
-            </td>
-          </tr>
-        )
+        myClasses.first = true;
+      } else if (index === 1) {
+        myClasses.second = true;
+      } else if (index === 2) {
+        myClasses.third = true;
+      } else {
+        pos = (<span>{index+1}ème</span>);
       }
-      const border = (index < props.results.length-1) ? 'border-bottom' : null;
+
+      let tdClasses = classnames(myClasses);
+
       return (
-        <tr className={border} key={p.id}>
-          <td className="pl-5 text-left">{index+1}<sup>ème</sup></td>
-          <td>{p.username}</td>
-          <td className="pr-5 text-right">{p.points} points</td>
+        <tr className={tdClasses} key={p.id}>
+          <td width="1">{pos}</td>
+          <td><strong>{p.username}</strong></td>
+          <td className="text-right" width="1">{p.points}&nbsp;points</td>
         </tr>
       )
     });
 
   return (
     <div className="GameResults pt-5">
-      <h5 className="text-white mb-5">Partie terminée !</h5>
-      <table className="table bg-white p-3 rounded">
+      <div className="mb-5 text-center">
+        <h5>Partie terminé !</h5>
+        <div>La prochaine partie débute dans quelques instants...</div>
+      </div>
+      <table className="table p-3">
         <tbody>
-          {playerItems}
+          {tableResults}
         </tbody>
       </table>
     </div>

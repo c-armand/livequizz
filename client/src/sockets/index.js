@@ -16,6 +16,10 @@ const setupSocket = (dispatch) => {
       dispatch(playersActions.joinGame(currentPlayer))
   })
 
+  socket.on('initGame', (game) => {
+    dispatch(gameActions.initGame(game))
+  })
+
   socket.on('registered', player => {
     dispatch(playersActions.registered(player))
   })
@@ -24,16 +28,16 @@ const setupSocket = (dispatch) => {
     dispatch(playersActions.playerJoined(player))
   })
 
+  socket.on('invalidPlayer', errors => {
+    alert(errors.username)
+  })
+
   socket.on('playerDisconnected', player => {
     dispatch(playersActions.playerDisconnected(player))
   })
 
   socket.on('nextQuestion', data => {
     dispatch(questionActions.nextQuestion(data))
-  })
-
-  socket.on('nextClub', club => {
-    dispatch(questionActions.nextClub(club))
   })
 
   socket.on('propositionFeedback', result => {

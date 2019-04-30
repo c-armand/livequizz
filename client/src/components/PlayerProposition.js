@@ -1,121 +1,76 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 
-const PlayerProposition = props => {
+import PlayerInput from './PlayerInput';
 
-  let elm;
-  if (!props.currentPlayer) {
+class PlayerProposition extends Component {
+  
+  render() {
 
-    return null; // Not loggedIn
+    let elm;
+    if (!this.props.currentPlayer) {
 
-  } else if (props.currentQuestion.number && !props.currentQuestion.answer && !props.currentQuestion.playerProposition) {
+      return null; // Not loggedIn
 
-    // LoggedIn, question not finished and no proposition made
-    let playerInput;
-    elm = (
-      <div className="p-3">
-        <input
-          onKeyPress = { e => {
-            if (e.key === 'Enter') {
-              props.dispatch({ propositionText: playerInput.value});
-              playerInput.value = '';
-            }
-          }}
-          type="text"
-          className="form-control"
-          ref={ node => {
-            playerInput = node
-          }}
-          placeholder="Votre réponse"
-        />
-      </div>
-    )
+    } else if (this.props.currentQuestion.number && !this.props.currentQuestion.answer && !this.props.currentQuestion.playerProposition) {
 
-  } else if (props.currentQuestion.number && (props.currentQuestion.playerProposition || props.currentQuestion.answer)) {
-
-    // Question answered or proposition made
-    let feedback;
-    if (props.currentQuestion.playerPropositionIsCorrect === true) {
-      feedback = (
-        <div className="feedback bg-success p-3">
-          Bonne réponse !
-          <div className="h5">+{props.currentQuestion.playerPointsWon} point{(props.currentQuestion.playerPointsWon > 1) ? 's' : ''}</div>
-        </div>
-      )
-    } else if (props.currentQuestion.playerPropositionIsCorrect === false) {
-      feedback = <div className="feedback bg-danger p-3">Mauvaise réponse !</div>
-    }
-    const text = (props.currentQuestion.answer && !props.currentQuestion.playerProposition) ? 'Vous n\'avez pas répondu à cette question...' : 'Votre réponse :';
-
-    elm = (
-      <div className="text-white">
+      // LoggedIn, question not finished and no proposition made
+      elm = (
         <div className="p-3">
-          <div className="font-weight-light">{text}</div>
-          <div className="h5 mb-0">{props.currentQuestion.playerProposition}</div>
+          <PlayerInput dispatch={this.props.dispatch} />
         </div>
-        {feedback}
+      )
+
+    } else if (this.props.currentQuestion.number && (this.props.currentQuestion.playerProposition || this.props.currentQuestion.answer)) {
+
+      // Question answered or proposition made
+      let feedback;
+      if (this.props.currentQuestion.playerPropositionIsCorrect === true) {
+        feedback = (
+          <div className="feedback success p-3">
+            Bonne réponse !
+            <div className="h5">+{this.props.currentQuestion.playerPointsWon} point{(this.props.currentQuestion.playerPointsWon > 1) ? 's' : ''}</div>
+          </div>
+        )
+      } else if (this.props.currentQuestion.playerPropositionIsCorrect === false) {
+        feedback = <div className="feedback failure p-3">Mauvaise réponse !</div>
+      }
+      const text = (this.props.currentQuestion.answer && !this.props.currentQuestion.playerProposition) ? 'Vous n\'avez pas répondu à cette question...' : 'Votre réponse :';
+
+      elm = (
+        <div className="text-white">
+          {feedback}
+          <div className="p-3">
+            <div className="font-weight-light">{text}</div>
+            <div className="h5 mb-0">{this.props.currentQuestion.playerProposition}</div>
+          </div>
+        </div>
+      )
+
+    } else {
+      elm = <div className="p-3">Attente de la prochaine partie...</div>
+    }
+
+    return (
+      <div className="PlayerProposition rounded-bottom">
+        {elm}
       </div>
     )
-
-  } else {
-    elm = <div className="p-3">Attente de la prochaine partie...</div>
   }
+}
 
-  return (
-    <div className="PlayerProposition">
-      {elm}
-    </div>
-  )
-
-  /* const PropositionSubmitted = () => {
-    if (props.playerProposition && props.playerProposition !== '') {
-      let classname = '';
-      let comment = 'Vérification...';
-      if (props.playerPropositionIsCorrect === true) {
-        classname = 'text-success';
-        comment = 'Bonne réponse !';
-      } else if(props.playerPropositionIsCorrect === false) {
-        classname = 'text-danger';
-        comment = 'Faux, nul, zéro.';
-      }
-
-      return (
-        <div className={`PropositionSubmitted ${classname} rounded shadow p-3`}>
-          <div className="h5 mb-2">{this.props.playerProposition}</div>
-          <div>{comment}</div>
-        </div>
-      );
-    }
-    return null;
-  }
-
-  const PlayerInput = () => {
-    if (props.currentPlayer) {
-      const disabled = (this.props.playerProposition || !this.props.currentQuestion.number || this.props.currentQuestion.answer);
-      const placeholder = (this.props.playerProposition) ? '' : 'Tapez votre réponse ici';
-      let playerInput;
-      return (
-        <input
-          onKeyPress = { e => {
-            if (e.key === 'Enter') {
-              this.props.dispatch({ propositionText: playerInput.value});
-              playerInput.value = '';
-            }
-          }}
-          type="text"
-          className="form-control form-control-sm"
-          ref={ node => {
-            playerInput = node
-          }}
-          disabled={disabled}
-          placeholder={placeholder}
-        />
-      )
-    } else {
-      return <input type="text" placeholder="Veuillez vous connecter" className="form-control" disabled="disabled" />;
-    }
-  } */
-
+PlayerProposition.propTypes = {
+  currentPlayer: PropTypes.shape({
+    id: PropTypes.number,
+    username: PropTypes.string,
+    points: PropTypes.number
+  }),
+  currentQuestion: PropTypes.shape({
+    number: PropTypes.number,
+    question: PropTypes.string,
+    answer: PropTypes.string
+  }),
+  dispatch: PropTypes.func
 }
 
 export default PlayerProposition;

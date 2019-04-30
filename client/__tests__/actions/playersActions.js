@@ -1,5 +1,3 @@
-import mockStore from 'redux-mock-store'
-
 import * as playersActions from '../../src/actions/playersActions'
 import { JOIN_GAME, REGISTERED, PLAYER_JOINED, PLAYER_DISCONNECTED, UPDATE_POINTS } from '../../src/actions/types';
 

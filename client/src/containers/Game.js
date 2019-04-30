@@ -3,9 +3,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import Question from '../components/Question'
+import GameHeader from '../components/GameHeader'
 import PlayerProposition from '../components/PlayerProposition';
 import { submitProposition } from '../actions/questionActions';
 import GameResults from '../components/GameResults';
+
+import loader from '../../assets/loader.svg'
 
 class Game extends Component {
   render() {
@@ -14,25 +17,35 @@ class Game extends Component {
       game = (
         <GameResults results={this.props.game.results} />
       )
-    } else {
+    } else if (this.props.game.questions.length > 0) {
       game = (
         <div>
           <Question
-            number={this.props.currentQuestion.number}
-            clubs={this.props.currentQuestion.clubs}
-            answer={this.props.currentQuestion.answer}
+            question={this.props.game.questions[this.props.game.questions.length-1]}
           />
           <PlayerProposition
             currentPlayer={this.props.currentPlayer}
-            currentQuestion={this.props.currentQuestion}
+            currentQuestion={this.props.game.questions[this.props.game.questions.length-1]}
             dispatch={this.props.dispatch}
           />
+        </div>
+      )
+    } else {
+      game = (
+        <div className="text-center pt-5">
+          <img src={loader} width="36" />
+          <div>Attente de la prochaine partie...</div>
         </div>
       )
     }
 
     return (
-      <div>
+      <div className="Game h-100 rounded shadow-sm bg-white">
+        <GameHeader
+          questions={this.props.game.questions}
+          isComplete={this.props.game.isComplete}
+          currentPlayer={this.props.currentPlayer}
+        />
         {game}
       </div>
     )
@@ -41,20 +54,17 @@ class Game extends Component {
 
 Game.propTypes = {
   game: PropTypes.shape({
+    questions: PropTypes.arrayOf(PropTypes.shape({
+      number: PropTypes.number,
+      question: PropTypes.string,
+      answer: PropTypes.string
+    })),
     isComplete: PropTypes.bool.isRequired,
     results: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number.isRequired,
       username: PropTypes.string.isRequired,
       points: PropTypes.number.isRequired
     }))
-  }),
-  currentQuestion: PropTypes.shape({
-    number: PropTypes.number,
-    clubs: PropTypes.array,
-    answer: PropTypes.string,
-    playerProposition: PropTypes.string,
-    playerPropositionIsCorrect: PropTypes.bool,
-    playerPointsWon: PropTypes.number
   }),
   currentPlayer: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -65,8 +75,7 @@ Game.propTypes = {
 
 const mapStateToProps = state => ({
   game: state.game,
-  currentPlayer: state.players.current,
-  currentQuestion: state.question
+  currentPlayer: state.players.current
 })
 
 const mapDispatchToProps = dispatch => ({

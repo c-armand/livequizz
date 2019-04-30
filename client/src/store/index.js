@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { persistStore, persistReducer } from 'redux-persist';
+// import { persistStore, persistReducer } from 'redux-persist';
+import thunk from 'redux-thunk';
 import storage from 'redux-persist/lib/storage';
 
 import rootReducer from '../reducers';
@@ -9,7 +10,7 @@ import rootSaga from '../sagas';
 
 const initialState = {};
 const sagaMiddleware = createSagaMiddleware();
-const middleware = [sagaMiddleware];
+const middleware = [sagaMiddleware, thunk];
 
 const persistConfig = {
   key: 'root',

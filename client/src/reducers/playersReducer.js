@@ -1,4 +1,4 @@
-import { RECEIVE_GAME_DATA, REGISTERED, PLAYER_JOINED, PLAYER_DISCONNECTED, UPDATE_POINTS } from '../actions/types'
+import { RECEIVE_GAME_DATA, INIT_GAME, REGISTERED, PLAYER_JOINED, PLAYER_DISCONNECTED, PROPOSITION_FEEDBACK, UPDATE_POINTS } from '../actions/types'
 
 export const initialState = {
   list: [],
@@ -12,6 +12,13 @@ export default function(state = initialState, action) {
         ...state,
         list: action.payload.players
       }
+    case INIT_GAME:
+      let newState = { ...state }
+      if (state.current !== null) {
+        newState.current.points = 0
+      }
+      newState.list = action.payload.players
+      return newState
     case REGISTERED:
       return {
         ...state,
@@ -30,6 +37,14 @@ export default function(state = initialState, action) {
         ...state,
         list: [...state.list.filter(p => p.id !== action.payload.id)]
         // eventLog: addEventToLog(state.eventLog, `${action.payload.username} a quitté la partie`)
+      }
+    case PROPOSITION_FEEDBACK:
+      return {
+        ...state,
+        current: {
+          ...state.current,
+          points: state.current.points + action.payload.pointsWon
+        }
       }
     case UPDATE_POINTS:
       return {

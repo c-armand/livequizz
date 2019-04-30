@@ -1,13 +1,8 @@
-import { NEXT_QUESTION, NEXT_CLUB, ANSWER_FOUND, REVEAL_ANSWER, SUBMIT_PROPOSITION, PROPOSITION_FEEDBACK } from './types'
+import { NEXT_QUESTION, ANSWER_FOUND, REVEAL_ANSWER, SUBMIT_PROPOSITION, PROPOSITION_FEEDBACK } from './types'
 
 export const nextQuestion = data => ({
   type: NEXT_QUESTION,
   payload: data
-})
-
-export const nextClub = club => ({
-  type: NEXT_CLUB,
-  payload: club
 })
 
 export const answerFound = player => ({

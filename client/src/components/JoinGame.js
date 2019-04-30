@@ -22,17 +22,25 @@ class JoinGame extends Component {
   onSubmit(e) {
     e.preventDefault();
     this.props.dispatch({ username: this.state.username });
+    this.setState({ username: '' });
   }
 
   render() {
     return (
-      <div className="border-bottom p-3">
+      <div className="JoinGame p-3">
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <input type="text" name="username" placeholder="Votre nom" className="form-control" onChange={this.onChange} />
+            <input
+              type="text"
+              name="username"
+              placeholder="Votre nom"
+              className="form-control"
+              value={this.state.username}
+              onChange={this.onChange}
+            />
           </div>
           <div className="form-group mb-0">
-            <button className="btn btn-primary btn-block">Jouer !</button>
+            <button className="btn btn-primary btn-block shadow-sm">Jouer !</button>
           </div>
         </form>
       </div>

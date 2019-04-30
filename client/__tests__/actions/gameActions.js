@@ -1,11 +1,24 @@
 import mockStore from 'redux-mock-store'
 
 import * as gameActions from '../../src/actions/gameActions'
-import { RECEIVE_GAME_DATA, GAME_RESULTS } from '../../src/actions/types';
+import { INIT_GAME, RECEIVE_GAME_DATA, GAME_RESULTS } from '../../src/actions/types';
 
 describe('all game actions', () => {
+  it('has an action initGame', () => {
+    const game = {
+      questions: [],
+      results: [],
+      isComplete: false
+    }
+    const expectedAction = {
+      type: INIT_GAME,
+      payload: game
+    }
+    expect(gameActions.initGame(game)).toEqual(expectedAction)
+  })
   it('has an action receiveGameData', () => {
     const gameData = {
+      questions: [],
       results: [],
       isComplete: false
     }

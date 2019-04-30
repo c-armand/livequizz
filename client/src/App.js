@@ -1,31 +1,50 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-// import { PersistGate } from 'redux-persist/integration/react'
 
-import './App.css'
-import '../assets/favicon.ico'
+import { store } from './store/index'
+import Navbar from './components/Navbar'
 
-import { store, persistor } from './store/index'
-import Game from './containers/Game'
-import Sidebar from './containers/Sidebar'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import Register from './components/Register';
+import Login from './components/Login';
+import Home from './components/Home';
+import QuestionAdd from './components/admin/QuestionAdd';
+
+import jwt_decode from 'jwt-decode';
+import setAuthToken from './utils/setAuthToken';
+import { setCurrentUser, logoutUser } from './actions/authenticationAction';
+
+
+
+if (localStorage.jwtToken) {
+  setAuthToken(localStorage.jwtToken);
+  const decoded = jwt_decode(localStorage.jwtToken);
+  store.dispatch(setCurrentUser(decoded));
+
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    store.dispatch(logoutUser());
+    window.location.href = '/login'
+  }
+}
+
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        {/* <PersistGate loading={null} persistor={persistor}> */}
-          <div className="wrap">
-            <header className="App-header">
-              <h3 className="mb-3">Football Quizz</h3>
-            </header>
-            <div className="App">
-              <div className="App-game rounded shadow">
-                <Sidebar />
-                <Game />
-              </div>
+        <Router>
+          <div className="h-100">
+            <Navbar />
+            <Route exact path="/" component={ Home } />
+            <div className="container">
+              <Route exact path="/register" component={ Register } />
+              <Route exact path="/login" component={ Login } />
+              <Route exact path="/admin/questions/add" component={ QuestionAdd } />
             </div>
           </div>
-          {/* </PersistGate> */}
+        </Router>
       </Provider>
     );
   }

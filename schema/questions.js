@@ -1,4 +1,4 @@
-const questions = [
+const old_questions = [
   { id: 1, clubs: ['Paris SG', 'RC Strasbourg', 'AS Saint-Étienne', 'Montpellier MHSC', 'Paris SG'], acceptedAnswers: ['Francis Llacer', 'llacer'] },
   { id: 2, clubs: ['Valenciennes FC', 'FC Bruges', 'Olympique de Marseille', 'Milan AC', 'Bayern Munich', 'Girondins de Bordeaux', 'EA Guingamp' ], acceptedAnswers: ['Jean-Pierre Papin', 'papin', 'jpp'] },
   { id: 3, clubs: ['AJ Auxerre', 'Olympique de Marseille', 'Nîmes Olympique', 'Leeds United', 'Manchester United'], acceptedAnswers: ['Éric Cantona', 'cantona', 'canto'] },
@@ -11,4 +11,4 @@ const questions = [
   { id: 10, clubs: ['AJ Auxerre', 'Olympique de Marseille', 'Nîmes Olympique', 'Leeds United', 'Manchester United'], acceptedAnswers: ['Ronaldinho', 'ronnie', 'ronaldino', 'ronie'] }
 ];
 
-module.exports = questions;
+module.exports = old_questions;

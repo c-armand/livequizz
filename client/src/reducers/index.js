@@ -2,10 +2,12 @@ import { combineReducers } from 'redux'
 
 import gameReducer from './gameReducer'
 import playersReducer from './playersReducer'
-import questionReducer from './questionReducer'
+import errorReducer from './errorReducer'
+import authReducer from './authReducer'
 
 export default combineReducers({
   game: gameReducer,
   players: playersReducer,
-  question: questionReducer
+  errors: errorReducer,
+  auth: authReducer
 })
