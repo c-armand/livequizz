@@ -62,10 +62,10 @@ let currentGame = {
 }
 let currentQuestions;
 
-const questionsByGame = 3;
-const answerDelay = 5000; // 15 sec before showing the answer
-const nextQuestionDelay = 2000; // 10 sec before next question
-const nextGameDelay = 5000; // 10 sec before next question
+const questionsByGame = 15;
+const answerDelay = 18000; // 15 sec before showing the answer
+const nextQuestionDelay = 5000; // 10 sec before next question
+const nextGameDelay = 30000; // 10 sec before next question
 
 // Start listening
 const port = process.env.PORT || 3001;
