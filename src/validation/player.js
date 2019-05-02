@@ -1,20 +1,19 @@
-import Validator from 'validator';
-import isEmpty from './is-empty';
+import Validator from 'validator'
+import isEmpty from './is-empty'
 
-const regex = /^[a-zA-Z0-9]+$/;
+const regex = /^[a-zA-Z0-9]+$/
 
 const validatePlayer = (player, players) => {
+  let errors = {}
 
-  let errors = {};
-
-  player.username = !isEmpty(player.username) ? player.username : '';
+  player.username = !isEmpty(player.username) ? player.username : ''
 
   if (!Validator.isLength(player.username, {min: 1, max: 16})) {
-    errors.username = 'Votre nom doit contenir entre 1 et 16 caractères';
+    errors.username = 'Votre nom doit contenir entre 1 et 16 caractères'
   }
 
   if (Validator.isEmpty(player.username)) {
-    errors.username = 'Veuillez saisir un nom svp';
+    errors.username = 'Veuillez saisir un nom svp'
   }
 
   const existsPlayer = players.find((p) => {
@@ -35,4 +34,4 @@ const validatePlayer = (player, players) => {
   }
 }
 
-module.exports = validatePlayer;
+module.exports = validatePlayer

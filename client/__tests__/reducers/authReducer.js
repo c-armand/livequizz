@@ -9,11 +9,9 @@ const user = {
 }
 
 describe('auth reducer', () => {
-
   it('has a default state', () => {
     expect(authReducer(undefined, {})).toEqual(initialState)
   })
-
   it('should handle SET_CURRENT_USER', () => {
     expect(authReducer(undefined, {
       type: SET_CURRENT_USER,

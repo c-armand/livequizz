@@ -5,18 +5,18 @@ import * as gameActions from '../actions/gameActions'
 import * as playersActions from '../actions/playersActions'
 import * as questionActions from '../actions/questionActions'
 
-const setupSocket = (dispatch) => {
+const setupSocket = dispatch => {
   const socket = io(process.env.API_URL)
 
   socket.on('receiveGameData', gameData => {
     dispatch(gameActions.receiveGameData(gameData))
-
     const currentPlayer = store.getState().players.current
-    if (currentPlayer)
+    if (currentPlayer) {
       dispatch(playersActions.joinGame(currentPlayer))
+    }
   })
 
-  socket.on('initGame', (game) => {
+  socket.on('initGame', game => {
     dispatch(gameActions.initGame(game))
   })
 
@@ -60,7 +60,7 @@ const setupSocket = (dispatch) => {
     dispatch(playersActions.updatePoints(players))
   })
 
-  return socket;
+  return socket
 }
 
-export default setupSocket;
+export default setupSocket

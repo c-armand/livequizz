@@ -1,28 +1,27 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-import { joinGame } from '../actions/playersActions';
+import { joinGame } from '../actions/playersActions'
 
 class JoinGame extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       username: ''
-    };
-
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    }
+    this.onChange = this.onChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
   }
 
   onChange(e) {
-    this.setState({ username: e.target.value});
+    this.setState({ username: e.target.value})
   }
 
   onSubmit(e) {
-    e.preventDefault();
-    this.props.dispatch({ username: this.state.username });
-    this.setState({ username: '' });
+    e.preventDefault()
+    this.props.dispatch({ username: this.state.username })
+    this.setState({ username: '' })
   }
 
   render() {
@@ -58,4 +57,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(() => ({}), mapDispatchToProps)(JoinGame);
+export default connect(() => ({}), mapDispatchToProps)(JoinGame)

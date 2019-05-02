@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class PlayerInput extends Component {
   constructor(props) {
@@ -6,11 +6,11 @@ class PlayerInput extends Component {
     this.state = {
       playerProposition: ''
     }
-    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
   componentDidMount() {
-    this.playerInput.focus();
+    this.playerInput.focus()
   }
 
   handleInputChange(e) {
@@ -24,8 +24,8 @@ class PlayerInput extends Component {
       <input
         onKeyPress = { e => {
           if (e.key === 'Enter') {
-            this.props.dispatch({ propositionText: this.state.playerProposition });
-            this.setState({ playerProposition: '' });
+            this.props.dispatch({ propositionText: this.state.playerProposition })
+            this.setState({ playerProposition: '' })
           }
         }}
         type="text"
@@ -39,4 +39,4 @@ class PlayerInput extends Component {
   }
 }
 
-export default PlayerInput;
+export default PlayerInput

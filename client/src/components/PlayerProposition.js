@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
-import PlayerInput from './PlayerInput';
+import PlayerInput from './PlayerInput'
 
 class PlayerProposition extends Component {
   
   render() {
 
-    let elm;
+    let elm
     if (!this.props.currentPlayer) {
 
-      return null; // Not loggedIn
+      return null // Not loggedIn
 
     } else if (this.props.currentQuestion.number && !this.props.currentQuestion.answer && !this.props.currentQuestion.playerProposition) {
 
@@ -24,7 +24,7 @@ class PlayerProposition extends Component {
     } else if (this.props.currentQuestion.number && (this.props.currentQuestion.playerProposition || this.props.currentQuestion.answer)) {
 
       // Question answered or proposition made
-      let feedback;
+      let feedback
       if (this.props.currentQuestion.playerPropositionIsCorrect === true) {
         feedback = (
           <div className="feedback success p-3">
@@ -35,7 +35,7 @@ class PlayerProposition extends Component {
       } else if (this.props.currentQuestion.playerPropositionIsCorrect === false) {
         feedback = <div className="feedback failure p-3">Mauvaise réponse !</div>
       }
-      const text = (this.props.currentQuestion.answer && !this.props.currentQuestion.playerProposition) ? 'Vous n\'avez pas répondu à cette question...' : 'Votre réponse :';
+      const text = (this.props.currentQuestion.answer && !this.props.currentQuestion.playerProposition) ? 'Vous n\'avez pas répondu à cette question...' : 'Votre réponse :'
 
       elm = (
         <div className="text-white">
@@ -73,4 +73,4 @@ PlayerProposition.propTypes = {
   dispatch: PropTypes.func
 }
 
-export default PlayerProposition;
+export default PlayerProposition

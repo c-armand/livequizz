@@ -1,36 +1,36 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import classnames from 'classnames';
+import classnames from 'classnames'
 
-import JoinGame from '../components/JoinGame';
+import JoinGame from '../components/JoinGame'
 
 class PlayerList extends Component {
   render() {
     const joinGame = (!this.props.currentPlayer)
       ? <JoinGame />
-      : null;
+      : null
 
-    let position = 1;
-    let previousPoints = 1000000;
+    let position = 1
+    let previousPoints = 1000000
 
     const playerItems = (this.props.players.length > 0)
       ? this.props.players
         .sort((a, b) => b.points - a.points)
         .map(p => {
 
-          let positionElm = null;
+          let positionElm = null
           if (position === 1) {
             positionElm = <span>1</span>
           } else if (p.points < previousPoints) {
             positionElm = <span>{position}</span>
           }
 
-          const classname = (this.props.currentPlayer && p.id === this.props.currentPlayer.id) ? 'active' : '';
-          let questionPoints = null;
+          const classname = (this.props.currentPlayer && p.id === this.props.currentPlayer.id) ? 'active' : ''
+          let questionPoints = null
 
           if (null !== this.props.currentQuestion) {
-            let i = 1;
+            let i = 1
             this.props.currentQuestion.winners.forEach(w => {
               if (w.player.id === p.id) {
                 questionPoints = <span className={classnames({
@@ -41,13 +41,13 @@ class PlayerList extends Component {
                   'bronze': (i === 3),
                 })}>+{w.pointsWon}</span>
               }
-              i++;
-            });
+              i++
+            })
           }
 
-          position++;
+          position++
           previousPoints = p.points
-          const pointSuffix = (p.points > 1) ? 'points' : 'point';
+          const pointSuffix = (p.points > 1) ? 'points' : 'point'
 
           return (
             <tr key={p.id} className={classname}>
@@ -58,7 +58,7 @@ class PlayerList extends Component {
             </tr>
           )
         })
-      : <tr><td colSpan={4} className="text-white text-center font-weight-light">Aucun joueur connecté</td></tr>;
+      : <tr><td colSpan={4} className="text-white text-center font-weight-light">Aucun joueur connecté</td></tr>
 
     return (
       <div className="PlayerList h-100">
@@ -105,6 +105,6 @@ const mapStateToProps = state => ({
   currentQuestion: (Array.isArray(state.game.questions) && state.game.questions.length > 0)
     ? state.game.questions[state.game.questions.length-1]
     : null
-});
+})
 
-export default connect(mapStateToProps)(PlayerList);
+export default connect(mapStateToProps)(PlayerList)

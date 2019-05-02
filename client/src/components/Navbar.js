@@ -1,19 +1,20 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { logoutUser } from '../actions/authenticationAction';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+
+import { logoutUser } from '../actions/authenticationAction'
 
 class Navbar extends Component {
 
   onLogout(e) {
-    e.preventDefault();
-    this.props.logoutUser(this.props.history);
+    e.preventDefault()
+    this.props.logoutUser(this.props.history)
   }
 
   render() {
-    const { isAuthenticated, user } = this.props.auth;
+    const { isAuthenticated, user } = this.props.auth
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <a href="#" className="nav-link" onClick={this.onLogout.bind(this)}>
@@ -31,6 +32,7 @@ class Navbar extends Component {
         </li>
       </ul>
     )
+
     return (
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
         <div className="container">
@@ -43,13 +45,14 @@ class Navbar extends Component {
     )
   }
 }
+
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps, { logoutUser })(withRouter(Navbar));
+export default connect(mapStateToProps, { logoutUser })(withRouter(Navbar))

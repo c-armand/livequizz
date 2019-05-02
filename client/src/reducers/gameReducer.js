@@ -29,8 +29,8 @@ export default function(state = initialState, action) {
         questions: [...state.questions, action.payload]
       }
     case SUBMIT_PROPOSITION:
-      var previousQuestions = state.questions.slice(0, state.questions.length-1);
-      var lastQuestion = state.questions[state.questions.length-1];
+      var previousQuestions = state.questions.slice(0, state.questions.length-1)
+      var lastQuestion = state.questions[state.questions.length-1]
       var newState = {
         ...state,
         questions: [
@@ -43,8 +43,8 @@ export default function(state = initialState, action) {
       }
       return newState
     case PROPOSITION_FEEDBACK:
-      var previousQuestions = state.questions.slice(0, state.questions.length-1);
-      var lastQuestion = state.questions[state.questions.length-1];
+      var previousQuestions = state.questions.slice(0, state.questions.length-1)
+      var lastQuestion = state.questions[state.questions.length-1]
       var newState = {
         ...state,
         questions: [
@@ -59,8 +59,8 @@ export default function(state = initialState, action) {
       }
       return newState
     case ANSWER_FOUND:
-      var previousQuestions = state.questions.slice(0, state.questions.length-1);
-      var lastQuestion = state.questions[state.questions.length-1];
+      var previousQuestions = state.questions.slice(0, state.questions.length-1)
+      var lastQuestion = state.questions[state.questions.length-1]
       var newState = {
         ...state,
         questions: [
@@ -73,8 +73,8 @@ export default function(state = initialState, action) {
       }
       return newState
     case REVEAL_ANSWER:
-      var previousQuestions = state.questions.slice(0, state.questions.length-1);
-      var lastQuestion = state.questions[state.questions.length-1];
+      var previousQuestions = state.questions.slice(0, state.questions.length-1)
+      var lastQuestion = state.questions[state.questions.length-1]
       var newState = {
         ...state,
         questions: [

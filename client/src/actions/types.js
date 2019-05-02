@@ -18,5 +18,5 @@ export const REVEAL_ANSWER = 'REVEAL_ANSWER'
 export const NEXT_QUESTION = 'NEXT_QUESTION'
 
 // Signup / Login
-export const GET_ERRORS = 'GET_ERRORS';
-export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const GET_ERRORS = 'GET_ERRORS'
+export const SET_CURRENT_USER = 'SET_CURRENT_USER'

@@ -3,11 +3,11 @@ import React, { Component } from 'react'
 class EventLog extends Component {
   constructor(props) {
     super(props)
-    this.eventList = React.createRef();
+    this.eventList = React.createRef()
   }
 
   componentDidUpdate() {
-    this.eventList.current.scrollTo(0, this.eventList.current.getElementsByTagName('ul')[0].scrollHeight);
+    this.eventList.current.scrollTo(0, this.eventList.current.getElementsByTagName('ul')[0].scrollHeight)
   }
 
   render() {
@@ -30,4 +30,4 @@ class EventLog extends Component {
   }
 }
 
-export default EventLog;
+export default EventLog

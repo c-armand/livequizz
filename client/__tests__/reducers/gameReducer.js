@@ -11,11 +11,9 @@ const question = {
 }
 
 describe('game reducer', () => {
-
   it('has a default state', () => {
     expect(gameReducer(undefined, {})).toEqual(initialState)
   })
-
   it('should handle RECEIVE_GAME_DATA', () => {
     expect(gameReducer(undefined, {
       type: RECEIVE_GAME_DATA,
@@ -31,7 +29,6 @@ describe('game reducer', () => {
       results: []
     })
   })
-
   it('should handle INIT_GAME', () => {
     expect(gameReducer(undefined, {
       type: INIT_GAME,
@@ -48,7 +45,6 @@ describe('game reducer', () => {
       results: []
     })
   })
-
   it('should handle NEXT_QUESTION', () => {
     expect(gameReducer(undefined, {
       type: NEXT_QUESTION,
@@ -58,7 +54,6 @@ describe('game reducer', () => {
       questions: [...initialState.questions, question]
     })
   })
-
   it('should handle SUBMIT_PROPOSITION', () => {
     const definedState = {
       ...initialState,
@@ -77,7 +72,6 @@ describe('game reducer', () => {
       }]
     })
   })
-
   it('should handle PROPOSITION_FEEDBACK', () => {
     const definedState = {
       ...initialState,
@@ -100,7 +94,6 @@ describe('game reducer', () => {
       }]
     })
   })
-
   it('should handle ANSWER_FOUND', () => {
     const definedState = {
       ...initialState,
@@ -125,7 +118,6 @@ describe('game reducer', () => {
       }]
     })
   })
-
   it('should handle REVEAL_ANSWER', () => {
     const definedState = {
       ...initialState,
@@ -142,7 +134,6 @@ describe('game reducer', () => {
       }]
     })
   })
-
   it('should handle GAME_RESULTS', () => {
     expect(gameReducer(undefined, {
       type: GAME_RESULTS,

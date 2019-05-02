@@ -1,7 +1,5 @@
-import mockStore from 'redux-mock-store'
-
 import * as questionActions from '../../src/actions/questionActions'
-import { NEXT_QUESTION, ANSWER_FOUND, REVEAL_ANSWER, SUBMIT_PROPOSITION, PROPOSITION_FEEDBACK } from '../../src/actions/types';
+import { NEXT_QUESTION, ANSWER_FOUND, REVEAL_ANSWER, SUBMIT_PROPOSITION, PROPOSITION_FEEDBACK } from '../../src/actions/types'
 
 describe('all question actions', () => {
   it('has an action nextQuestion', () => {

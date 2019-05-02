@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import classnames from 'classnames';
+import React, { Component } from 'react'
+import classnames from 'classnames'
 import ReactTooltip from 'react-tooltip'
 
 class GameHeader extends Component {
 
   render() {
 
-    let questions = [];
-    let question;
-    let liClass;
+    let questions = []
+    let question
+    let liClass
 
     for (let i = 1; i < 16; i++) {
       question = this.props.questions.find(q => (
         q.number === i
-      ));
+      ))
 
       liClass = {
         current: false,
@@ -27,9 +27,9 @@ class GameHeader extends Component {
         liClass.current = (this.props.questions.length === i)
 
         if (question.playerPropositionIsCorrect === true) {
-          liClass.correct = true; // = 'question-correct';
+          liClass.correct = true
         } else if (question.playerPropositionIsCorrect === false) {
-          liClass.correct = false; // = 'question-wrong';
+          liClass.correct = false
         }
       }
 
@@ -37,7 +37,7 @@ class GameHeader extends Component {
         number: i,
         liClass,
         question
-      });
+      })
     }
 
     const bricks = questions.map(q => {
@@ -51,7 +51,7 @@ class GameHeader extends Component {
 
       if (q.liClass.done === true) {
 
-        let content = `<div class="question-label mb-1">Question ${q.number}</div>`;
+        let content = `<div class="question-label mb-1">Question ${q.number}</div>`
         if (q.question.playerProposition && q.question.playerPropositionIsCorrect === true) {
           content += `<div>Votre réponse</div><div class="player-proposition text-success">${q.question.playerProposition}</div>`
           content += `<div><span class="badge badge-success">+${q.question.playerPointsWon} point${(q.question.playerPointsWon > 1) ? 's' : ''}</span></div>`
@@ -103,7 +103,7 @@ class GameHeader extends Component {
             <span className="score-value pb-1 pt-1 pl-2 pr-2 text-right rounded-right">{this.props.currentPlayer.points} {this.props.currentPlayer.points > 1 ? 'points' : 'point'}</span>
           </div>
         )
-      : null;
+      : null
 
     return (
       <div className="GameHeader p-3 border-bottom">
@@ -119,4 +119,4 @@ class GameHeader extends Component {
   }
 }
 
-export default GameHeader;
+export default GameHeader

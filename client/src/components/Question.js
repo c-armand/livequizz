@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Question extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -11,25 +10,19 @@ class Question extends Component {
     }
   }
 
-  /* var timeRemaining = [rendered on page load or queried by ajax]; // in milliseconds
-  var endTime = new Date(new Date().getTime() + timeRemaining);
-  
-  // Put this in a setInterval, or however you currently handle it
-  var countdown = (endTime.getTime() - new Date().getTime()) / 1000; */
-
   componentDidMount() {
     this.setTimer(this.props.question.timeRemaining)
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.question.number != nextProps.question.number && nextProps.question.timeRemaining > 0 && nextProps.question.answer == null) {
-      if (this.timerID !== null) clearInterval(this.timerID);
-        this.setTimer(nextProps.question.timeRemaining)
+      if (this.timerID !== null) clearInterval(this.timerID)
+      this.setTimer(nextProps.question.timeRemaining)
     }
   }
 
   componentWillUnmount() {
-    clearInterval(this.timerID);
+    clearInterval(this.timerID)
   }
 
   tick(timeRemaining) {
@@ -58,12 +51,12 @@ class Question extends Component {
 
     return setInterval(() => {
       this.tick(Math.round((this.state.endTime.getTime() - new Date().getTime()) / 1000))
-    }, 1000);
+    }, 1000)
   }
 
   render() {
 
-    let time = (this.state.timeRemaining > 0) ? this.state.timeRemaining : 0;
+    let time = (this.state.timeRemaining > 0) ? this.state.timeRemaining : 0
     const countDown = (
       <div className="mt-5 countdown text-center">
         <span className="time">{time}</span>
@@ -72,7 +65,7 @@ class Question extends Component {
 
     const title = (this.props.question.number)
       ? <h5 className="pt-5 mb-3 text-center">Question {this.props.question.number} / 15</h5>
-      : <div className="pt-5 text-center">Attente de la prochaine partie...</div>;
+      : <div className="pt-5 text-center">Attente de la prochaine partie...</div>
 
     const Answer = (props) => {
       if (props.answer) {
@@ -81,9 +74,9 @@ class Question extends Component {
             <div className="mb-2">Réponse</div>
             <div className="answer-text mb-0">{props.answer}</div>
           </div>
-        );
+        )
       }
-      return null;
+      return null
     }
 
     return (
@@ -109,4 +102,4 @@ Question.propTypes = {
   )
 }
 
-export default Question;
+export default Question

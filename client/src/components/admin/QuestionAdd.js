@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { addQuestion } from '../../actions/adminQuestionAction';
-import classnames from 'classnames';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import classnames from 'classnames'
+
+import { addQuestion } from '../../actions/adminQuestionAction'
 
 class QuestionAdd extends Component {
 
   constructor() {
-    super();
+    super()
     this.state = {
       question: '',
       acceptedAnswers: '',
       errors: {}
     }
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleInputChange(e) {
@@ -24,12 +25,12 @@ class QuestionAdd extends Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     const question = {
       question: this.state.question,
       acceptedAnswers: this.state.acceptedAnswers
     }
-    this.props.addQuestion(question);
+    this.props.addQuestion(question)
     this.setState({
       question: '',
       acceptedAnswers: '',
@@ -39,7 +40,7 @@ class QuestionAdd extends Component {
 
   componentDidMount() {
     if (!this.props.isAuthenticated) {
-      this.props.history.push('/login');
+      this.props.history.push('/login')
     }
   }
 
@@ -47,12 +48,12 @@ class QuestionAdd extends Component {
     if (nextProps.errors) {
       this.setState({
         errors: nextProps.errors
-      });
+      })
     }
   }
 
   render() {
-    const { errors } = this.state;
+    const { errors } = this.state
     return (
       <div className="container" style={{ marginTop: '50px', width: '700px' }}>
         <h2 style={{ marginBottom: '40px' }}>Nouvelle question</h2>

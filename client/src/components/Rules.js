@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Rules = () => {
   return (
@@ -15,4 +15,4 @@ const Rules = () => {
   )
 }
 
-export default Rules;
+export default Rules

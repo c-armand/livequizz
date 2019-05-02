@@ -1,87 +1,34 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
-import Question from '../components/Question'
-import GameHeader from '../components/GameHeader'
-import PlayerProposition from '../components/PlayerProposition';
-import { submitProposition } from '../actions/questionActions';
-import GameResults from '../components/GameResults';
+import GameBoard from '../containers/GameBoard'
+import Sidebar from '../containers/Sidebar'
+import PlayerList from '../containers/PlayerList'
 
-import loader from '../../assets/loader.svg'
+import '../App.css'
+import '../../assets/favicon.ico'
 
 class Game extends Component {
   render() {
-    let game;
-    if (this.props.game.isComplete) {
-      game = (
-        <GameResults results={this.props.game.results} />
-      )
-    } else if (this.props.game.questions.length > 0) {
-      game = (
-        <div>
-          <Question
-            question={this.props.game.questions[this.props.game.questions.length-1]}
-          />
-          <PlayerProposition
-            currentPlayer={this.props.currentPlayer}
-            currentQuestion={this.props.game.questions[this.props.game.questions.length-1]}
-            dispatch={this.props.dispatch}
-          />
-        </div>
-      )
-    } else {
-      game = (
-        <div className="text-center pt-5">
-          <img src={loader} width="36" />
-          <div>Attente de la prochaine partie...</div>
-        </div>
-      )
-    }
-
     return (
-      <div className="Game h-100 rounded shadow-sm bg-white">
-        <GameHeader
-          questions={this.props.game.questions}
-          isComplete={this.props.game.isComplete}
-          currentPlayer={this.props.currentPlayer}
-        />
-        {game}
+      <div className="container h-100" style={{paddingTop: '56px'}}>
+        <div className="row h-100">
+          <div className="col-sm-3">
+            <Sidebar />
+          </div>
+          <div className="col-sm-9">
+            <div className="row h-100">
+              <div className="col-sm-8 pl-0 pr-0 pt-3 pb-3">
+                <GameBoard />
+              </div>
+              <div className="col-sm-4">
+                <PlayerList />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
 }
 
-Game.propTypes = {
-  game: PropTypes.shape({
-    questions: PropTypes.arrayOf(PropTypes.shape({
-      number: PropTypes.number,
-      question: PropTypes.string,
-      answer: PropTypes.string
-    })),
-    isComplete: PropTypes.bool.isRequired,
-    results: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      username: PropTypes.string.isRequired,
-      points: PropTypes.number.isRequired
-    }))
-  }),
-  currentPlayer: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    username: PropTypes.string.isRequired
-  }),
-  dispatch: PropTypes.func.isRequired
-}
-
-const mapStateToProps = state => ({
-  game: state.game,
-  currentPlayer: state.players.current
-})
-
-const mapDispatchToProps = dispatch => ({
-  dispatch: (proposition) => {
-    dispatch(submitProposition(proposition))
-  }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Game);
+export default Game

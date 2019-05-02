@@ -8,11 +8,9 @@ const players = [
 ]
 
 describe('players reducer', () => {
-
   it('has a default state', () => {
     expect(playersReducer(undefined, {})).toEqual(initialState)
   })
-
   it('should handle RECEIVE_GAME_DATA', () => {
     expect(playersReducer(undefined, {
       type: RECEIVE_GAME_DATA,
@@ -22,7 +20,6 @@ describe('players reducer', () => {
       list: players
     })
   })
-
   it('should handle INIT_GAME', () => {
     expect(playersReducer(undefined, {
       type: INIT_GAME,
@@ -32,7 +29,6 @@ describe('players reducer', () => {
       list: players
     })
   })
-
   it('should handle REGISTERED', () => {
     expect(playersReducer(undefined, {
       type: REGISTERED,
@@ -43,7 +39,6 @@ describe('players reducer', () => {
       current: { id: 1, username: 'Alex', points: 0 }
     })
   })
-
   it('should handle PLAYER_JOINED', () => {
     expect(playersReducer(undefined, {
       type: PLAYER_JOINED,
@@ -53,7 +48,6 @@ describe('players reducer', () => {
       list: [{ id: 1, username: 'Jack', points: 0 }]
     })
   })
-
   it('should handle PLAYER_DISCONNECTED', () => {
     expect(playersReducer({
       ...initialState,
@@ -66,7 +60,6 @@ describe('players reducer', () => {
       list: []
     })
   })
-
   it('should handle PROPOSITION_FEEDBACK', () => {
     expect(playersReducer({
       ...initialState,
@@ -87,7 +80,6 @@ describe('players reducer', () => {
       }
     })
   })
-
   it('should handle UPDATE_POINTS', () => {
     expect(playersReducer({
       ...initialState,
@@ -114,5 +106,4 @@ describe('players reducer', () => {
       ]
     })
   })
-
 })

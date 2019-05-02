@@ -1,12 +1,11 @@
 import * as playersActions from '../../src/actions/playersActions'
-import { JOIN_GAME, REGISTERED, PLAYER_JOINED, PLAYER_DISCONNECTED, UPDATE_POINTS } from '../../src/actions/types';
+import { JOIN_GAME, REGISTERED, PLAYER_JOINED, PLAYER_DISCONNECTED, UPDATE_POINTS } from '../../src/actions/types'
+
+const player = { id: 1, username: 'Bob', points: 0 }
+const player2 = { id: 2, username: 'John', points: 2 }
+const player3 = { id: 3, username: 'Maria', points: 5 }
 
 describe('all actions', () => {
-
-  const player = { id: 1, username: 'Bob', points: 0 }
-  const player2 = { id: 2, username: 'John', points: 2 }
-  const player3 = { id: 3, username: 'Maria', points: 5 }
-
   it ('has an action joinGame', () => {
     const playerData = { username: 'GalaHad' }
     const expectedAction = {
