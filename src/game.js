@@ -10,7 +10,7 @@ const gameManager = {
     results: [],
     isComplete: false
   },
-  selectedQuestions: [],
+  selectedQuestions: [], // Questions (with answers) selected for this game
   isStarted: function() {
     return (this.game.questions.length > 0)
   },
@@ -20,10 +20,12 @@ const gameManager = {
     }
   },
   initGame: function() {
-    this.game.questions = [],
-    this.game.players = [],
-    this.game.results = [],
+    this.game.questions = []
+    this.game.results = []
     this.game.isComplete = false
+    this.game.players.forEach(p => {
+      p.points = 0
+    })
   },
   nextGame: function() {
     this.initGame()
