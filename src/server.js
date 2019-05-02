@@ -59,7 +59,7 @@ gameManager.nextGame()
 io.on('connection', socket => {
   let currentPlayer = null
 
-  if (gameManager.game.isStarted) {
+  if (gameManager.isStarted()) {
     gameManager.getCurrentQuestion().timeRemaining = getTimeRemaining(gameManager.getCurrentQuestion())
   }
 
