@@ -36,10 +36,10 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
         <div className="container">
-          <Link className="navbar-brand" to="/">Le Big Quizz</Link>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <Link className="navbar-brand" to="/">LiveQuizz</Link>
+          {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
             {isAuthenticated ? authLinks : guestLinks}
-          </div>
+          </div> */}
         </div>
       </nav>
     )

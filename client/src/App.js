@@ -33,7 +33,7 @@ class App extends Component {
           <div className="h-100">
             <Navbar />
             <Route exact path="/" component={ Game } />
-            <div className="container" style={{'paddingTop':'80px'}}>
+            <div className="container">
               <Route exact path="/register" component={ Register } />
               <Route exact path="/login" component={ Login } />
               <Route exact path="/admin/questions/add" component={ QuestionAdd } />
