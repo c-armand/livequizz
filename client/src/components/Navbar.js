@@ -36,7 +36,7 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
         <div className="container">
-          <Link className="navbar-brand" to="/">Banana Quiz</Link>
+          <Link className="navbar-brand" to="/">Le Big Quizz</Link>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             {isAuthenticated ? authLinks : guestLinks}
           </div>

@@ -24,7 +24,7 @@ class GameBoard extends Component {
             question={this.props.game.questions[this.props.game.questions.length-1]}
           />
           <PlayerProposition
-            currentPlayer={this.props.currentPlayer}
+            currentPlayer={this.props.players.current}
             currentQuestion={this.props.game.questions[this.props.game.questions.length-1]}
             dispatch={this.props.dispatch}
           />
@@ -44,7 +44,7 @@ class GameBoard extends Component {
         <GameHeader
           questions={this.props.game.questions}
           isComplete={this.props.game.isComplete}
-          currentPlayer={this.props.currentPlayer}
+          players={this.props.players}
         />
         {game}
       </div>
@@ -66,16 +66,24 @@ GameBoard.propTypes = {
       points: PropTypes.number.isRequired
     }))
   }),
-  currentPlayer: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    username: PropTypes.string.isRequired
+  players: PropTypes.shape({
+    list: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      username: PropTypes.string.isRequired,
+      points: PropTypes.number.isRequired
+    })),
+    current: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      username: PropTypes.string.isRequired,
+      points: PropTypes.number.isRequired
+    })
   }),
   dispatch: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
   game: state.game,
-  currentPlayer: state.players.current
+  players: state.players
 })
 
 const mapDispatchToProps = dispatch => ({
