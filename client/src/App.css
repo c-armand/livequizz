@@ -78,6 +78,14 @@
 .PlayerProposition .feedback.success { background: #6d8d31; }
 .PlayerProposition .feedback.failure { background: #e81d1d; }
 
+.Question h5 {
+  padding-top: 2em;
+}
+
+.Question .question-container {
+  padding-bottom: 2em;
+}
+
 .Question .countdown {
   background: #2f2d2e;
   color: #fff;
@@ -86,6 +94,7 @@
   height: 70px;
   border-radius: 15px;
   position: relative;
+  margin-top: 2em;
 }
 
 .Question .countdown .time {
@@ -97,6 +106,13 @@
   transform: translateY(-50%);
   font-size: 2em;
   font-weight: 700;
+}
+
+.Answer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 2em;
 }
 
 .Answer .answer-text {
@@ -113,3 +129,11 @@
 .GameResults table tr.first .fa-trophy { color: #eac600 !important; }
 .GameResults table tr.second .fa-trophy { color: silver !important; }
 .GameResults table tr.third .fa-trophy { color: brown !important; }
+
+
+@media (max-width: 768px) {
+  .Question h5 { padding-top: 1em; }
+  .Question .countdown { margin-top: 1em; }
+  .Question .question-container { padding-bottom: 1em; }
+  .Answer { padding: 1em; }
+}

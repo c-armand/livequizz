@@ -98,13 +98,13 @@ class GameHeader extends Component {
 
       playerScore = (
         <div className="row">
-          <div className="col-sm-6">
+          <div className="col-6">
             <div className="score rounded">
               <span className="score-label pb-1 pt-1 pl-2 pr-2">Votre score</span>
               <span className="score-value pb-1 pt-1 pl-2 pr-2 text-right rounded-right">{this.props.players.current.points} {this.props.players.current.points > 1 ? 'points' : 'point'}</span>
             </div>
           </div>
-          <div className="col-sm-6 text-right">
+          <div className="col-6 text-right">
             <div className="score rounded">
               <span className="score-label pb-1 pt-1 pl-2 pr-2">Votre position</span>
               <span className="score-value pb-1 pt-1 pl-2 pr-2 text-right rounded-right">{playerPos}</span>
