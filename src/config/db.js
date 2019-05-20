@@ -1,5 +1,7 @@
+require('dotenv').config()
+
 const dbConfig = {
-  host: 'mongodb+srv://charles:bonjoure@cluster0-9mk4j.mongodb.net/test?retryWrites=true'
+  host: process.env.DATABASE_URL
 }
 
 module.exports = dbConfig
